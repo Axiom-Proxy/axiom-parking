@@ -3,210 +3,363 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GenericMotors — Drive the Future</title>
+  <title>EduSpectrum — Learning, Literacy & Mastery</title>
+  <meta name="description" content="EduSpectrum — pedagogy, curriculum, assessment, STEM, literacy, inquiry-based learning, mastery, and more." />
   <style>
     :root{
-      --bg:#0f1724; /* deep navy */
+      --bg:#0f1724;
       --card:#0b1220;
-      --accent:#ff6b35; /* orange */
-      --muted:#94a3b8;
+      --accent:#4fd1c5;
+      --muted:#9aa6b2;
       --glass: rgba(255,255,255,0.04);
       --radius:14px;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
-      background: linear-gradient(180deg,#081020 0%, #071426 60%);
-      color:#e6eef8;
+      background: linear-gradient(180deg,#071024 0%,#071a2a 60%);
+      color:#e6eef6;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      line-height:1.4;
-      padding:32px;
+      line-height:1.45;
     }
-
-    .container{max-width:1150px;margin:0 auto}
-
     header{
-      display:flex;align-items:center;justify-content:space-between;padding:10px 0 28px;
+      padding:28px 32px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      position:sticky;
+      top:0;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(11,17,28,0.32), rgba(11,17,28,0.18));
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      z-index:10;
     }
     .brand{display:flex;gap:12px;align-items:center}
     .logo{
-      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ff9b6b);display:flex;align-items:center;justify-content:center;font-weight:700;color:#071426;font-size:20px;box-shadow:0 6px 18px rgba(0,0,0,0.6);
+      width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#60a5fa);
+      display:grid;place-items:center;font-weight:700;color:#062024;font-size:18px;
+      box-shadow:0 6px 18px rgba(79,209,197,0.08), inset 0 -6px 18px rgba(255,255,255,0.03);
     }
     nav{display:flex;gap:18px;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600}
-    nav a.cta{background:var(--accent);padding:10px 14px;border-radius:10px;color:#071426}
-
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 460px;gap:28px;align-items:center;margin-bottom:36px}
-    .hero-left h1{font-size:40px;margin:0 0 12px}
-    .sub{color:var(--muted);margin-bottom:20px}
-    .cta-row{display:flex;gap:12px}
-    .btn{padding:12px 18px;border-radius:12px;border:0;font-weight:700;cursor:pointer}
-    .btn.primary{background:var(--accent);color:#071426}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
-
-    .hero-right{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:20px;box-shadow:inset 0 -20px 60px rgba(0,0,0,0.6);}
-    .car-stage{height:260px;border-radius:12px;background-image:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;flex-direction:column;justify-content:center;align-items:center}
-    .car-img{width:100%;height:160px;background:url('https://images.unsplash.com/photo-1542367597-7f4a7f64e2e0?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=') center/cover no-repeat;border-radius:10px;margin-bottom:12px;filter:brightness(0.95) saturate(1.05)}
-    .price{font-weight:800;font-size:18px}
-
-    /* models */
-    .models{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:40px}
-    .card{background:var(--card);padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,0.02)}
-    .model-photo{height:140px;border-radius:10px;background-size:cover;background-position:center;margin-bottom:12px}
-    .model-info{display:flex;justify-content:space-between;align-items:center}
-    .model-title{font-weight:700}
-    .specs{color:var(--muted);font-size:13px;margin-top:10px}
-
-    /* features */
-    .features{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
-    .feature{background:var(--glass);padding:14px;border-radius:12px;min-width:180px}
-    .feature h4{margin:0 0 6px}
-    .muted{color:var(--muted)}
-
-    footer{border-top:1px solid rgba(255,255,255,0.03);padding-top:18px;display:flex;justify-content:space-between;align-items:center}
-
-    /* responsive */
-    @media (max-width:980px){
+    nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px}
+    nav a.primary{background:var(--accent);color:#042124;padding:10px 14px;border-radius:10px}
+    main{padding:40px 32px;max-width:1200px;margin:0 auto}
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:28px;
+      align-items:start;
+      margin-bottom:28px;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:28px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    h1{font-size:30px;margin:0 0 10px 0;letter-spacing:-0.4px}
+    p.lead{color:var(--muted);margin:0 0 18px 0}
+    .cta{display:flex;gap:12px;align-items:center}
+    .btn{font-weight:700;padding:12px 16px;border-radius:12px;border:none;cursor:pointer}
+    .btn.primary{background:var(--accent);color:#022;box-shadow:0 8px 20px rgba(79,209,197,0.08)}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+    .stats{display:flex;gap:12px;margin-top:18px}
+    .stat{background:var(--glass);padding:12px;border-radius:12px;font-size:14px;color:var(--muted)}
+    /* right column */
+    .aside-hero{display:flex;flex-direction:column;gap:12px}
+    .search{
+      display:flex;gap:8px;align-items:center;background:rgba(255,255,255,0.02);padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,0.025)
+    }
+    .search input{background:transparent;border:0;color:#e6eef6;outline:none;width:100%}
+    .pill{display:inline-block;padding:8px 10px;border-radius:999px;background:#081826;color:var(--muted);font-weight:600;font-size:13px;border:1px solid rgba(255,255,255,0.02)}
+    /* features grid */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+    .feature{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.02)}
+    .feature h3{margin:0 0 8px 0;font-size:15px}
+    .feature p{margin:0;color:var(--muted);font-size:13px}
+    /* word cloud */
+    .word-cloud{
+      margin-top:26px;padding:18px;border-radius:12px;background:linear-gradient(90deg,#021328 0%, #041c2a 100%);border:1px solid rgba(255,255,255,0.02);
+      display:flex;flex-wrap:wrap;gap:8px;
+    }
+    .word{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:13px;color:var(--muted);border:1px solid rgba(255,255,255,0.015)}
+    /* course list */
+    .courses{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+    .course{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.02)}
+    .course .badge{width:52px;height:52px;border-radius:10px;background:linear-gradient(180deg,#0b3b4a,#06313b);display:grid;place-items:center;font-weight:800}
+    .course h4{margin:0;font-size:15px}
+    .course p{margin:3px 0 0 0;color:var(--muted);font-size:13px}
+    footer{margin-top:34px;padding:28px 32px;border-top:1px solid rgba(255,255,255,0.02);color:var(--muted);font-size:13px;border-radius:12px}
+    @media (max-width:920px){
       .hero{grid-template-columns:1fr}
-      .models{grid-template-columns:repeat(2,1fr)}
+      .features{grid-template-columns:repeat(2,1fr)}
+      .courses{grid-template-columns:1fr}
     }
-    @media (max-width:640px){
-      body{padding:18px}
+    @media (max-width:520px){
       nav{display:none}
-      .models{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr}
     }
-
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">GM</div>
-        <div>
-          <div style="font-weight:800">GenericMotors</div>
-          <div style="font-size:13px;color:var(--muted)">Innovation • Comfort • Safety</div>
-        </div>
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">ES</div>
+      <div>
+        <div style="font-weight:800">EduSpectrum</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">pedagogy · curriculum · mastery</div>
       </div>
-      <nav>
-        <a href="#models">Models</a>
-        <a href="#deals">Offers</a>
-        <a href="#dealer">Find a dealer</a>
-        <a class="cta" href="#build">Build & price</a>
-      </nav>
-    </header>
+    </div>
 
+    <nav aria-label="Main navigation">
+      <a href="#">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">Assessment</a>
+      <a class="primary" href="#">Get Started</a>
+    </nav>
+  </header>
+
+  <main>
     <section class="hero">
-      <div class="hero-left">
-        <h1>Drive tomorrow, today.</h1>
-        <p class="sub">Sleek electric and hybrid vehicles engineered to perform — with advanced safety tech and long-range batteries.</p>
-        <div class="cta-row">
-          <button class="btn primary">Explore models</button>
-          <button class="btn ghost">Locate dealer</button>
+      <div class="card" role="region" aria-labelledby="hero-title">
+        <h1 id="hero-title">Transform learning with research-backed pedagogy</h1>
+        <p class="lead">
+          A concise hub for curriculum design, formative assessment, competency-based progression, and inclusive instruction.
+          From literacy and numeracy to STEM inquiry and digital citizenship — build learning objectives, scaffolding, and rubrics that lead to mastery.
+        </p>
+
+        <div class="cta">
+          <button class="btn primary" onclick="alert('Welcome! Explore courses, rubrics, and microlearning.')">Explore curricula</button>
+          <button class="btn ghost" onclick="alert('Sign up for educator tools — syllabus builders, assessment banks, and more.')">Educator tools</button>
         </div>
-        <div style="margin-top:18px;color:var(--muted);font-size:14px">Quick specs • 320–420 mi range • 0–60 in 3.8s • 8-year battery warranty</div>
+
+        <div class="stats" aria-hidden="true">
+          <div class="stat"><strong>1,200+</strong> standards-aligned units</div>
+          <div class="stat"><strong>980+</strong> formative rubrics</div>
+          <div class="stat"><strong>4.8/5</strong> practitioner satisfaction</div>
+        </div>
+
+        <div class="features" aria-hidden="false">
+          <div class="feature">
+            <h3>Curriculum & Syllabus</h3>
+            <p>Standards mapping, scope & sequence, backward design, learning objectives, competencies, accreditation-ready templates.</p>
+          </div>
+          <div class="feature">
+            <h3>Assessment & Feedback</h3>
+            <p>Diagnostic, formative, summative, adaptive assessment, rubrics, mastery tracking, analytics, item analysis.</p>
+          </div>
+          <div class="feature">
+            <h3>Instructional Strategies</h3>
+            <p>Scaffolding, inquiry-based learning, project-based learning, flipped classroom, blended learning, UDL & differentiated instruction.</p>
+          </div>
+        </div>
+
+        <!-- Word cloud packed but still readable -->
+        <div style="margin-top:18px">
+          <h3 style="font-size:15px;margin-bottom:10px">Education Vocabulary & Concepts</h3>
+          <div class="word-cloud" role="list" aria-label="Education word cloud">
+            <!-- A lot of terms crammed in — visible but styled to remain usable -->
+            <!-- We'll include many pedagogical, linguistic, assessment, cognitive, and technological terms -->
+            <span class="word">pedagogy</span>
+            <span class="word">curriculum</span>
+            <span class="word">syllabus</span>
+            <span class="word">standards</span>
+            <span class="word">scope & sequence</span>
+            <span class="word">learning objectives</span>
+            <span class="word">competency-based</span>
+            <span class="word">mastery</span>
+            <span class="word">proficiency</span>
+            <span class="word">rubric</span>
+
+            <span class="word">formative assessment</span>
+            <span class="word">summative assessment</span>
+            <span class="word">diagnostic assessment</span>
+            <span class="word">adaptive assessment</span>
+            <span class="word">item analysis</span>
+            <span class="word">feedback</span>
+            <span class="word">self-regulated learning</span>
+            <span class="word">portfolio</span>
+            <span class="word">benchmark</span>
+            <span class="word">IEP</span>
+
+            <span class="word">UDL</span>
+            <span class="word">accessibility</span>
+            <span class="word">assistive technology</span>
+            <span class="word">inclusion</span>
+            <span class="word">culturally responsive</span>
+            <span class="word">scaffolding</span>
+            <span class="word">differentiation</span>
+            <span class="word">remediation</span>
+            <span class="word">enrichment</span>
+            <span class="word">collaboration</span>
+
+            <span class="word">Bloom's taxonomy</span>
+            <span class="word">remember</span>
+            <span class="word">understand</span>
+            <span class="word">apply</span>
+            <span class="word">analyze</span>
+            <span class="word">evaluate</span>
+            <span class="word">create</span>
+            <span class="word">metacognition</span>
+            <span class="word">cognitive load</span>
+            <span class="word">zone of proximal development</span>
+
+            <span class="word">constructivism</span>
+            <span class="word">behaviorism</span>
+            <span class="word">Vygotsky</span>
+            <span class="word">Piaget</span>
+            <span class="word">Gardner</span>
+            <span class="word">multiple intelligences</span>
+            <span class="word">experiential learning</span>
+            <span class="word">project-based</span>
+            <span class="word">inquiry-based</span>
+            <span class="word">problem-based</span>
+
+            <span class="word">STEM</span>
+            <span class="word">STEAM</span>
+            <span class="word">computational thinking</span>
+            <span class="word">algorithmic thinking</span>
+            <span class="word">data literacy</span>
+            <span class="word">statistics</span>
+            <span class="word">digital literacy</span>
+            <span class="word">media literacy</span>
+            <span class="word">coding</span>
+            <span class="word">robotics</span>
+
+            <span class="word">literacy</span>
+            <span class="word">phonics</span>
+            <span class="word">phoneme</span>
+            <span class="word">grapheme</span>
+            <span class="word">morphology</span>
+            <span class="word">syntax</span>
+            <span class="word">semantics</span>
+            <span class="word">reading comprehension</span>
+            <span class="word">numeracy</span>
+            <span class="word">math fluency</span>
+
+            <span class="word">spaced repetition</span>
+            <span class="word">retrieval practice</span>
+            <span class="word">interleaving</span>
+            <span class="word">mnemonic</span>
+            <span class="word">spacing effect</span>
+            <span class="word">transfer</span>
+            <span class="word">mastery learning</span>
+            <span class="word">microlearning</span>
+            <span class="word">scaffolded practice</span>
+            <span class="word">learning analytics</span>
+
+            <span class="word">formative feedback</span>
+            <span class="word">peer assessment</span>
+            <span class="word">self-assessment</span>
+            <span class="word">portfolio assessment</span>
+            <span class="word">learning outcomes</span>
+            <span class="word">curriculum alignment</span>
+            <span class="word">accreditation</span>
+            <span class="word">credentialing</span>
+            <span class="word">micro-credential</span>
+            <span class="word">badging</span>
+
+            <span class="word">instructional design</span>
+            <span class="word">learning experience</span>
+            <span class="word">UX for learners</span>
+            <span class="word">pedagogical framework</span>
+            <span class="word">heuristic</span>
+            <span class="word">heuristics</span>
+            <span class="word">heuristic evaluation</span>
+            <span class="word">heuristic method</span>
+            <span class="word">heuristic review</span>
+            <span class="word">heuristic analysis</span>
+
+            <span class="word">competency</span>
+            <span class="word">benchmarking</span>
+            <span class="word">progress monitoring</span>
+            <span class="word">learning path</span>
+            <span class="word">sequencing</span>
+            <span class="word">remedial instruction</span>
+            <span class="word">scaffold</span>
+            <span class="word">socratic questioning</span>
+            <span class="word">heuristics</span>
+            <span class="word">critical thinking</span>
+          </div>
+        </div>
       </div>
 
-      <aside class="hero-right">
-        <div class="car-stage">
-          <div class="car-img" role="img" aria-label="Featured car"></div>
-          <div style="display:flex;justify-content:space-between;width:100%;align-items:center">
-            <div>
-              <div style="font-weight:800">GM Volta S</div>
-              <div class="muted" style="font-size:13px">Premium electric sedan</div>
+      <aside class="aside-hero" aria-label="Quick tools">
+        <div class="card">
+          <div class="search" role="search">
+            <input aria-label="Search the learning catalog" placeholder="Search courses, standards, rubrics..." />
+            <div class="pill">K-12 · Higher Ed</div>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <div class="pill" style="font-weight:800">Lesson Planner</div>
+            <div class="pill">Syllabus Builder</div>
+            <div class="pill">Rubric Creator</div>
+            <div class="pill">Assessment Bank</div>
+          </div>
+        </div>
+
+        <div class="card" aria-live="polite">
+          <h3 style="margin:0 0 8px 0">Featured Courses</h3>
+          <div class="courses" aria-hidden="false">
+            <div class="course">
+              <div class="badge">LIT</div>
+              <div>
+                <h4>Foundations of Literacy</h4>
+                <p>Phonics, morphology, comprehension strategies, diagnostic literacy screening.</p>
+              </div>
             </div>
-            <div style="text-align:right">
-              <div class="price">From $46,990</div>
-              <div class="muted" style="font-size:13px">Est. delivery 2026</div>
+            <div class="course">
+              <div class="badge">STEM</div>
+              <div>
+                <h4>Applied Data & Inquiry</h4>
+                <p>Data literacy, statistics, computational thinking, project-based inquiry.</p>
+              </div>
+            </div>
+            <div class="course">
+              <div class="badge">PD</div>
+              <div>
+                <h4>Differentiated Instruction Lab</h4>
+                <p>UDL, scaffolding, IEP best practices, inclusive assessment design.</p>
+              </div>
+            </div>
+            <div class="course">
+              <div class="badge">EDU</div>
+              <div>
+                <h4>Assessment Design & Rubrics</h4>
+                <p>Formative feedback cycles, item-writing, adaptive assessments, analytics.</p>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div class="card" style="text-align:center">
+          <div style="font-weight:800;font-size:18px">Research & Tools</div>
+          <div style="color:var(--muted);margin-top:8px;font-size:13px">Evidence-based strategies: spaced practice, retrieval practice, feedback timing, scaffolding fidelity.</div>
         </div>
       </aside>
     </section>
 
-    <section id="models">
-      <h2 style="margin-bottom:12px">Featured models</h2>
-      <div class="models">
-        <article class="card">
-          <div class="model-photo" style="background-image:url('https://images.unsplash.com/photo-1549923746-c502d488b3ea?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=')"></div>
-          <div class="model-info">
-            <div>
-              <div class="model-title">Voltix GT</div>
-              <div class="muted" style="font-size:13px">Electric coupe</div>
-            </div>
-            <div style="text-align:right">
-              <div style="font-weight:800">$59,995</div>
-            </div>
-          </div>
-          <div class="specs">Range 340 mi · 450 hp · AWD</div>
-        </article>
-
-        <article class="card">
-          <div class="model-photo" style="background-image:url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=')"></div>
-          <div class="model-info">
-            <div>
-              <div class="model-title">TrailRider X</div>
-              <div class="muted" style="font-size:13px">Hybrid SUV</div>
-            </div>
-            <div style="text-align:right">
-              <div style="font-weight:800">$49,500</div>
-            </div>
-          </div>
-          <div class="specs">MPG equiv. 78 · Seating 7 · Tow 4,500 lb</div>
-        </article>
-
-        <article class="card">
-          <div class="model-photo" style="background-image:url('https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=')"></div>
-          <div class="model-info">
-            <div>
-              <div class="model-title">Comet EV</div>
-              <div class="muted" style="font-size:13px">Urban hatchback</div>
-            </div>
-            <div style="text-align:right">
-              <div style="font-weight:800">$29,900</div>
-            </div>
-          </div>
-          <div class="specs">Range 210 mi · Compact · 0–60 7.9s</div>
-        </article>
-      </div>
-    </section>
-
-    <section class="features">
-      <div class="feature">
-        <h4>Advanced Safety</h4>
-        <div class="muted">Autonomous assist, lane-keep, and predictive braking.</div>
-      </div>
-      <div class="feature">
-        <h4>Long Range</h4>
-        <div class="muted">Efficient packs and intelligent regen deliver industry-leading range.</div>
-      </div>
-      <div class="feature">
-        <h4>Seamless Connectivity</h4>
-        <div class="muted">Over-the-air updates, app control, and smart home integration.</div>
-      </div>
-    </section>
-
-    <section id="deals" style="margin-bottom:28px">
-      <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+    <footer role="contentinfo">
+      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
         <div>
-          <h3 style="margin:0">Limited-time offers</h3>
-          <div class="muted">Special financing and lease programs available.</div>
+          <strong>EduSpectrum</strong> — pedagogy, assessment, curriculum design. Built for educators, coaches, curriculum specialists, and instructional designers.
+          <div style="margin-top:8px;color:var(--muted)">Privacy · Terms · Contact</div>
         </div>
-        <div style="display:flex;gap:10px">
-          <button class="btn primary">View offers</button>
-          <button class="btn ghost">Check availability</button>
+
+        <div style="text-align:right;color:var(--muted)">
+          <div>Subscribe for educator briefs — research summaries, rubric templates, and microlearning.</div>
+          <div style="margin-top:8px">© <span id="year"></span> EduSpectrum</div>
         </div>
       </div>
-    </section>
-
-    <footer>
-      <div style="font-size:14px">© GenericMotors 2025 • All rights reserved</div>
     </footer>
+  </main>
 
-  </div>
+  <script>
+    // small niceties only — no external deps
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
